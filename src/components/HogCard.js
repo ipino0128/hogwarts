@@ -11,10 +11,10 @@ class HogCard extends React.Component {
     return require(`../hog-imgs/${formattedName}.jpg`);
   };
 
-  showDetails = () => {
-    // console.log(!this.state.clicked);
+  handleClick = () => {
+    console.log(!this.state.isClicked);
     this.setState({
-      clicked: !this.state.clicked,
+      isClicked: !this.state.isClicked,
     });
   };
 
@@ -23,14 +23,17 @@ class HogCard extends React.Component {
       <div className="ui eight wide column">
         <img
           src={this.getImage(this.props.hog.name)}
-          onClick={this.showDetails}
+          onClick={this.handleClick}
         />
         <h3>{this.props.hog.name}</h3>
         <button onClick={() => this.props.handleHide(this.props.hog)}>
-          Hide Hog
+          HIDE ME!
         </button>
+        <br />
+        <br />
+        <br />
         <div>
-          {this.state.clicked ? <HogDetails hog={this.props.hog} /> : null}
+          {this.state.isClicked ? <HogDetails hog={this.props.hog} /> : null}
         </div>
       </div>
     );
